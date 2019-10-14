@@ -1,8 +1,12 @@
-# Project - FEDERATED LEARNING ON THE MNIST DIGIT DATASET
+# Project - SECURE AGGREGATION FOR FEDERATED LEARNING ON THE MNIST DIGIT DATASET
 
 ## ABSTRACT
 
 Federated Learning is a machine learning setting where the goal is to train a high-quality centralized model with training data distributed over a large number of clients each with unreliable and relatively slow network connections. We consider learning algorithms for this setting where on each round, each client independently computes an update to the current model based on its local data and communicates this update to a central server, where the client-side updates are aggregated to compute a new global model. The typical clients in this setting are mobile phones, and communication efficiency is of utmost importance. 
+
+Secure aggregation for federated learning improves upon federated learning by ensuring that the weights gotten from the remote devices are encrypted before they are sent to the central device to be aggregated or before they are aggregated in another remote device.  
+  
+This adds an extra layer of protection by ensuring that the weights also remain anonymous since it is also possible to compromise privacy through the weights of a model,
 
 
 
@@ -20,13 +24,19 @@ Federated Learning is a machine learning setting where the goal is to train a hi
 
 ## PROJECT DESCRIPTION
 
-Federated learning involves the training of remote deep learning models across different devices before aggregating the weights learned from the remote devices into a central model. This is done in order to ensure that privacy is conserved across the remote devices by ensuring the central model has no access to the personal data of the remote devices involved and only has access to the weights of the remote models.    
+Federated learning involves the training of remote deep learning models across different devices before aggregating the weights learned from the remote devices into a central model. This is done in order to ensure that privacy is conserved across the remote devices by ensuring the central model has no access to the personal data of the remote devices involved and only has access to the weights of the remote models.  
+
+Secure aggregation for federated learning improves upon federated learning by ensuring that the weights gotten from the remote devices are encrypted before they are sent to the central device to be aggregated or before they are aggregated in another remote device.  
+
+After the weights are aggregated in their encrypted state then they would be decrypted.  
 
 - In this project, remote devices are not used but the process of training across remote models is simulated by dividing a dataset into various sub-datasets and then creating unique independent models for each sub-dataset.  
 - A central model would be created which would have no access to the dataset but would only have access to the weights gotten from training the remote models anonymously.
 - Virtual workers would be used from the Pysyft python package to simulate the Independent anonymous devices where the remote models would be stored.
 The Independent anonymous models would be trained on their respective sub-datasets then the weights learned would be returned to a central model where they would be aggregated.  
-- The process above ensures that the central model has no access to the actual sub-datasets but only has access to the weights gotten from training remote models across the sub-datasets. This ensures anonymously of the sub-databases thus conserving privacy and at the same time ensures the central model is accurate enough to make meaningful predictions.
+
+- The weights from the remote models would be encrypted using the Python Syft package. The encrypted weights would be divided and distributed among certain selected remote models where they would be aggregated in the encrypted state before being returned to the central model to be decrypted.
+- The process above ensures that the central model has no access to the direct weights from the remote models but only has access to the aggregated encrypted form. This adds an extra layer of privacy, further protecting the data on the remote devices by preventing the central model from using the weights from the remote devices to compromise privacy
 
 ---
 
@@ -71,4 +81,5 @@ pip install matplotlib
 2. [Secure and Private AI course Udacity](https://www.udacity.com/course/secure-and-private-ai--ud185)
 
 3. [The New Dawn of AI: Federated Learning](https://towardsdatascience.com/the-new-dawn-of-ai-federated-learning-8ccd9ed7fc3a)
+3. [Practical Secure Aggregation for Federated Learning on User-Held Data](https://ai.google/research/pubs/pub45808)
 
